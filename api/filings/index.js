@@ -1,14 +1,14 @@
 import Filing from '../../server/models/Filing.js';
 import AuditLog from '../../server/models/AuditLog.js';
 import { connectDB } from '../../server/config/database.js';
-import { authenticate } from '../_middleware.js';
+import { authenticateRequest } from '../_middleware.js';
 
 export default async function handler(req, res) {
   try {
     await connectDB();
     
     // Authenticate user
-    const user = await authenticate(req, res);
+    const user = await authenticateRequest(req, res);
     if (!user) return; // Response already sent by authenticate
 
     if (req.method === 'GET') {

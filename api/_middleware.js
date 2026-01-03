@@ -46,13 +46,49 @@ export async function authenticate(req, res, next) {
   }
 }
 
-export function runMiddleware(req, res, fn) {
-  return new Promise((resolve, reject) => {
-    fn(req, res, (result) => {
-      if (result instanceof Error) {
-        return reject(result);
+export async function authenticateRequest(req, res) {
+  try {
+    await connectDB();
+    
+    const authHeader = req.headers.authorization;
+    if (!authHeader || !authHeader.startsWith('Bearer ')) {
+      res.status(401).json({
+        success: false,
+        message: 'Access denied. No token provided.'
+      });
+      return null;
+    }
+
+    const token = authHeader.substring(7);
+    
+    try {
+      const decoded = jwt.verify(token, process.env.JWT_SECRET);
+      const user = await User.findById(decoded.userId).select('-password');
+      
+      if (!user) {
+        res.status(401).json({
+          success: false,
+          message: 'Invalid token. User not found.'
+        });
+        return null;
       }
-      return resolve(result);
+
+      req.user = user;
+      return user;
+    } catch (jwtError) {
+      res.status(401).json({
+        success: false,
+        message: 'Invalid token.'
+      });
+      return null;
+    }
+  } catch (error) {
+    console.error('Authentication error:', error);
+    res.status(500).json({
+      success: false,
+      message: 'Authentication failed',
+      error: error.message
     });
-  });
+    return null;
+  }
 }

@@ -1,6 +1,6 @@
 import Filing from '../../server/models/Filing.js';
 import { connectDB } from '../../server/config/database.js';
-import { authenticate } from '../_middleware.js';
+import { authenticateRequest } from '../_middleware.js';
 
 export default async function handler(req, res) {
   if (req.method !== 'GET') {
@@ -12,7 +12,7 @@ export default async function handler(req, res) {
     await connectDB();
     
     // Authenticate user
-    const user = await authenticate(req, res);
+    const user = await authenticateRequest(req, res);
     if (!user) return;
 
     const now = new Date();

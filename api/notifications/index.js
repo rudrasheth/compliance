@@ -1,13 +1,13 @@
 import Notification from '../../server/models/Notification.js';
 import { connectDB } from '../../server/config/database.js';
-import { authenticate } from '../_middleware.js';
+import { authenticateRequest } from '../_middleware.js';
 
 export default async function handler(req, res) {
   try {
     await connectDB();
     
     // Authenticate user
-    const user = await authenticate(req, res);
+    const user = await authenticateRequest(req, res);
     if (!user) return;
 
     if (req.method === 'GET') {
