@@ -6,10 +6,10 @@
 
 @layer base {
   :root {
-    --background: 240 6% 6%;
+    --background: 240 6% 10%;
     --foreground: 0 0% 98%;
 
-    --card: 240 5% 12%;
+    --card: 240 5% 15%;
     --card-foreground: 0 0% 98%;
 
     --popover: 240 6% 10%;
@@ -59,8 +59,8 @@
     --alert-red: 0 84% 60%;
     --alert-red-glow: 0 0 20px hsl(0 84% 60% / 0.5);
     
-    --surface-elevated: 240 6% 10%;
-    --surface-sunken: 240 10% 5%;
+    --surface-elevated: 240 6% 14%;
+    --surface-sunken: 240 10% 8%;
   }
 
   .dark {
