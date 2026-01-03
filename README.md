@@ -260,6 +260,36 @@ npm run dev
 
 ## 🚀 Deployment
 
+## 🚀 Deployment
+
+### Quick Deploy to Vercel
+
+1. **Fork/Clone the repository**
+2. **Deploy Frontend to Vercel**:
+   - Connect your GitHub repository to Vercel
+   - Set environment variable: `VITE_API_URL=https://your-backend-url.com/api`
+   - Deploy automatically
+
+3. **Deploy Backend** (choose one):
+   - **Railway**: Connect repository, set environment variables, deploy
+   - **Render**: Create web service, configure environment, deploy
+   - **Heroku**: Use Heroku CLI or GitHub integration
+
+4. **Configure Environment Variables**:
+   ```bash
+   # Frontend (Vercel)
+   VITE_API_URL=https://your-backend-url.com/api
+   
+   # Backend (Railway/Render/Heroku)
+   MONGODB_URI=your_mongodb_connection_string
+   JWT_SECRET=your_jwt_secret
+   EMAIL_USER=your_email@gmail.com
+   EMAIL_PASS=your_app_password
+   FRONTEND_URL=https://your-vercel-app.vercel.app
+   ```
+
+See [DEPLOYMENT.md](DEPLOYMENT.md) for detailed deployment instructions.
+
 ### Backend Deployment
 1. Set production environment variables
 2. Update CORS origins for production domain

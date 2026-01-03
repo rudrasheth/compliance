@@ -16,6 +16,11 @@
     }
   ],
   "env": {
-    "VITE_API_URL": "@vite_api_url"
+    "VITE_API_URL": "https://your-backend-url.vercel.app/api"
+  },
+  "functions": {
+    "app": {
+      "maxDuration": 30
+    }
   }
 }
