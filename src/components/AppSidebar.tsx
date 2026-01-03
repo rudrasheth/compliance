@@ -1,4 +1,4 @@
-import { LayoutDashboard, FileText, Calendar, Settings, Shield, History, Bell, ChevronLeft, Terminal } from "lucide-react";
+import { LayoutDashboard, FileText, Calendar, Settings, Shield, History, Bell, ChevronLeft, Terminal, LogOut, User } from "lucide-react";
 import { NavLink } from "@/components/NavLink";
 import {
   Sidebar,
@@ -15,6 +15,8 @@ import {
 } from "@/components/ui/sidebar";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
+import { useAuth } from "@/hooks/useAuth";
+import { useToast } from "@/hooks/use-toast";
 
 const mainNavItems = [
   { title: "Dashboard", url: "/", icon: LayoutDashboard },
@@ -30,7 +32,25 @@ const systemNavItems = [
 
 export function AppSidebar() {
   const { state, toggleSidebar } = useSidebar();
+  const { user, logout } = useAuth();
+  const { toast } = useToast();
   const collapsed = state === "collapsed";
+
+  const handleLogout = async () => {
+    try {
+      await logout();
+      toast({
+        title: "Logged out successfully",
+        description: "You have been signed out of your account.",
+      });
+    } catch (error) {
+      toast({
+        title: "Logout failed",
+        description: "There was an error signing you out.",
+        variant: "destructive",
+      });
+    }
+  };
 
   return (
     <Sidebar
@@ -103,7 +123,27 @@ export function AppSidebar() {
         </SidebarGroup>
       </SidebarContent>
 
-      <SidebarFooter className="p-4 border-t border-border">
+      <SidebarFooter className="p-4 border-t border-border space-y-3">
+        {/* User Info */}
+        {user && (
+          <div className="flex items-center gap-3">
+            <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center">
+              <User className="w-4 h-4 text-primary-foreground" />
+            </div>
+            {!collapsed && (
+              <div className="flex-1 min-w-0">
+                <p className="text-xs font-medium text-foreground truncate">
+                  {user.firstName} {user.lastName}
+                </p>
+                <p className="text-[10px] font-mono text-muted-foreground truncate">
+                  {user.email}
+                </p>
+              </div>
+            )}
+          </div>
+        )}
+
+        {/* License Info */}
         <div className="flex items-center gap-3">
           <div className="w-8 h-8 rounded-full bg-secondary flex items-center justify-center">
             <Shield className="w-4 h-4 text-neon-green" />
@@ -115,12 +155,28 @@ export function AppSidebar() {
             </div>
           )}
         </div>
+
+        {/* Logout Button */}
+        <Button
+          onClick={handleLogout}
+          variant="ghost"
+          size="sm"
+          className={cn(
+            "w-full justify-start text-muted-foreground hover:text-foreground hover:bg-sidebar-accent",
+            collapsed && "justify-center px-2"
+          )}
+        >
+          <LogOut className="w-4 h-4 shrink-0" />
+          {!collapsed && <span className="ml-2">Sign out</span>}
+        </Button>
+
+        {/* Collapse Button */}
         <Button
           variant="ghost"
           size="icon"
           onClick={toggleSidebar}
           className={cn(
-            "mt-3 w-full text-muted-foreground hover:text-foreground",
+            "w-full text-muted-foreground hover:text-foreground",
             collapsed && "rotate-180"
           )}
         >

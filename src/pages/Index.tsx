@@ -22,7 +22,7 @@ export default function Index() {
         <main className="flex-1 flex flex-col min-h-screen overflow-hidden bg-background">
           {/* Header */}
           <header className="h-14 border-b border-border flex items-center px-4 gap-4 shrink-0 bg-card">
-            <SidebarTrigger asChild>
+            <SidebarTrigger>
               <Button variant="ghost" size="icon" className="text-muted-foreground hover:text-foreground">
                 <Menu className="w-5 h-5" />
               </Button>
