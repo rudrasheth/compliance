@@ -6,10 +6,10 @@
 
 @layer base {
   :root {
-    --background: 240 6% 10%;
+    --background: 240 6% 14%;
     --foreground: 0 0% 98%;
 
-    --card: 240 5% 15%;
+    --card: 240 5% 20%;
     --card-foreground: 0 0% 98%;
 
     --popover: 240 6% 10%;
@@ -18,13 +18,13 @@
     --primary: 155 100% 50%;
     --primary-foreground: 240 10% 3.9%;
 
-    --secondary: 240 4% 16%;
+    --secondary: 240 4% 22%;
     --secondary-foreground: 0 0% 95%;
 
-    --muted: 240 4% 16%;
-    --muted-foreground: 240 5% 64.9%;
+    --muted: 240 4% 22%;
+    --muted-foreground: 240 5% 70%;
 
-    --accent: 240 4% 16%;
+    --accent: 240 4% 22%;
     --accent-foreground: 0 0% 95%;
 
     --destructive: 0 84% 60%;
@@ -36,19 +36,19 @@
     --success: 155 100% 50%;
     --success-foreground: 240 10% 3.9%;
 
-    --border: 240 4% 16%;
-    --input: 240 4% 16%;
+    --border: 240 4% 26%;
+    --input: 240 4% 22%;
     --ring: 155 100% 50%;
 
     --radius: 0.5rem;
 
-    --sidebar-background: 240 10% 3.9%;
-    --sidebar-foreground: 240 5% 64.9%;
+    --sidebar-background: 240 6% 12%;
+    --sidebar-foreground: 240 5% 70%;
     --sidebar-primary: 155 100% 50%;
     --sidebar-primary-foreground: 240 10% 3.9%;
-    --sidebar-accent: 240 4% 16%;
+    --sidebar-accent: 240 4% 22%;
     --sidebar-accent-foreground: 0 0% 95%;
-    --sidebar-border: 240 4% 16%;
+    --sidebar-border: 240 4% 26%;
     --sidebar-ring: 155 100% 50%;
 
     /* Custom ComplianceOS tokens */
@@ -59,8 +59,8 @@
     --alert-red: 0 84% 60%;
     --alert-red-glow: 0 0 20px hsl(0 84% 60% / 0.5);
     
-    --surface-elevated: 240 6% 14%;
-    --surface-sunken: 240 10% 8%;
+    --surface-elevated: 240 6% 18%;
+    --surface-sunken: 240 10% 12%;
   }
 
   .dark {
