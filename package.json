@@ -5,12 +5,13 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build && echo 'Build completed successfully'",
     "build:dev": "vite build --mode development",
     "build:prod": "vite build --mode production",
     "lint": "eslint .",
     "preview": "vite preview",
-    "type-check": "tsc --noEmit"
+    "type-check": "tsc --noEmit",
+    "vercel-build": "npm run build"
   },
   "dependencies": {
     "@hello-pangea/dnd": "^18.0.1",

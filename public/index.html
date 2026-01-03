@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ComplianceOS - Loading...</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+            background: #0a0a0a;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .loader {
+            text-align: center;
+        }
+        .spinner {
+            border: 2px solid #333;
+            border-top: 2px solid #00d4aa;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="loader">
+        <div class="spinner"></div>
+        <h2>ComplianceOS</h2>
+        <p>Loading your compliance dashboard...</p>
+    </div>
+    <script>
+        // Redirect to main app after 2 seconds if this fallback loads
+        setTimeout(() => {
+            window.location.reload();
+        }, 2000);
+    </script>
+</body>
+</html>
